@@ -1,10 +1,46 @@
 const mongoose = require('mongoose');
 
 const ReplaySchema = new mongoose.Schema({
-  name: {
+  gameType: {
     type: String,
-    required: [true, 'Please add a name'],
-    unique: true,
+  },
+  teams: {
+    redTeam: {
+      type: Array
+    },
+    blueTeam: {
+      type: Array
+    },
+    greenTeam: {
+      type: Array
+    },
+    yellowTeam: {
+      type: Array
+    },
+    cyanTeam: {
+      type: Array
+    },
+    magentaTeam: {
+      type: Array
+    }
+  },
+  gameEvents: {
+    type: Array
+  },
+  winner: {
+    type: String
+  },
+  bestWorm: {
+    type: String
+  },
+  wormOfMatch: {
+    type: String
+  },
+  mostDamage: {
+    type: String
+  },
+  dolittle: {
+    type: String
   }
 });
 
