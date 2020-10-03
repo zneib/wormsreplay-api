@@ -1,8 +1,8 @@
 const express = require('express');
+const { getReplays, getReplay } = require('../controllers/replays')
 const router = express.Router();
 
-router.get('/', (res, req) => {
-  req.send('Home route');
-});
+router.route('/').get(getReplays);
+router.route('/:id').get(getReplay);
 
 module.exports = router;
