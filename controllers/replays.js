@@ -3,19 +3,25 @@ const Replay = require('../models/Replay');
 // GET api/replays
 // Public
 exports.getReplays = async (req, res) => {
-  const replays = await Replay.find();
-  if (!replays) {
+  try {
+    const replays = await Replay.find();
+    if (!replays) {
+      res.status(500).send('Server Error');
+    }
+    res.status(200).json({ success: true, data: replays });
+  } catch (error) {
     console.error(error.message);
-    res.status(500).send('Server Error');
   }
-  res.status(200).json({ success: true, data: replays });
 };
 
 exports.getReplay = async (req, res) => {
-  const replay = await Replay.findById(req.params.id);
-  if (!replay) {
+  try {
+    const replay = await Replay.findById(req.params.id);
+    if (!replay) {
+      res.status(500).send('Server Error');
+    }
+    res.status(200).json({ success: true, data: replay });
+  } catch (error) {
     console.error(error.message);
-    res.status(500).send('Server Error');
   }
-  res.status(200).json({ success: true, data: replay });
 }
